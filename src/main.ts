@@ -60,7 +60,7 @@ export class Main extends Phaser.Scene {
 
       for (let j = 0; j <= i; j++) {
         const ball = this.add.sprite(x, y, "ball");
-        ball.tint = n++ % 2 === 0 ? 0x249fde : 0xffd541;
+        ball.tint = n === 5 ? 0x202033 : n % 2 === 0 ? 0x249fde : 0xffd541;
         ball.postFX.addShadow(0.5, 1, 0.1, 1, 0x000000, 2, 1.25);
         const ballBody = this.matter.add.circle(x, y, radius, {
           restitution: 1,
@@ -72,6 +72,7 @@ export class Main extends Phaser.Scene {
         this.matter.add.gameObject(ball, ballBody);
         this.balls.add(ball);
         y += radius * 2;
+        n++;
       }
     }
 
